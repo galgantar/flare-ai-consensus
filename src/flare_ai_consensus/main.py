@@ -8,6 +8,8 @@ from flare_ai_consensus.router import AsyncOpenRouterProvider
 from flare_ai_consensus.settings import settings
 from flare_ai_consensus.utils import load_json
 
+from flare_ai_consensus.embeddings import EmbeddingModel
+
 logger = structlog.get_logger(__name__)
 
 
@@ -47,11 +49,14 @@ def create_app() -> FastAPI:
         api_key=settings.open_router_api_key, base_url=settings.open_router_base_url
     )
 
+    embeddingModel = EmbeddingModel(api_key=settings.gemini_embedding_key, base_url=settings.open_router_base_url)
+
     # Create an APIRouter for chat endpoints and initialize ChatRouter.
     chat_router = ChatRouter(
         router=APIRouter(),
         provider=provider,
         consensus_config=settings.consensus_config,
+        embedding_model=embeddingModel
     )
     app.include_router(chat_router.router, prefix="/api/routes/chat", tags=["chat"])
 

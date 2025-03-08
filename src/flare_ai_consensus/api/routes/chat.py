@@ -5,6 +5,7 @@ from pydantic import BaseModel, Field
 from flare_ai_consensus.consensus import run_consensus
 from flare_ai_consensus.router import AsyncOpenRouterProvider
 from flare_ai_consensus.settings import ConsensusConfig, Message
+from flare_ai_consensus.embeddings import EmbeddingModel
 
 logger = structlog.get_logger(__name__)
 router = APIRouter()
@@ -31,6 +32,7 @@ class ChatRouter:
         self,
         router: APIRouter,
         provider: AsyncOpenRouterProvider,
+        embedding_model: EmbeddingModel,
         consensus_config: ConsensusConfig | None = None,
     ) -> None:
         """
@@ -43,6 +45,7 @@ class ChatRouter:
         """
         self._router = router
         self.provider = provider
+        self.embedding_model=embedding_model
         if consensus_config:
             self.consensus_config = consensus_config
         self.logger = logger.bind(router="chat")
@@ -72,6 +75,7 @@ class ChatRouter:
                     self.provider,
                     self.consensus_config,
                     initial_conversation,
+                    self.embedding_model
                 )
 
             except Exception as e:

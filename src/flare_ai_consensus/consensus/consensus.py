@@ -3,11 +3,12 @@ import asyncio
 import structlog
 
 from flare_ai_consensus.consensus.aggregator import (
-    async_decentralized_embedding_aggregator,
+    async_centralized_llm_aggregator, async_centralized_embedding_aggregator
 )
 from flare_ai_consensus.router import AsyncOpenRouterProvider, ChatRequest
 from flare_ai_consensus.settings import ConsensusConfig, Message, ModelConfig
 from flare_ai_consensus.utils import parse_chat_response
+from flare_ai_consensus.embeddings import EmbeddingModel
 
 logger = structlog.get_logger(__name__)
 
@@ -16,6 +17,7 @@ async def run_consensus(
     provider: AsyncOpenRouterProvider,
     consensus_config: ConsensusConfig,
     initial_conversation: list[Message],
+    embedding_model: EmbeddingModel
 ) -> str:
     """
     Asynchronously runs the consensus learning loop.
@@ -34,8 +36,8 @@ async def run_consensus(
     responses = await send_round(
         provider, consensus_config, response_data["initial_conversation"]
     )
-    aggregated_response = await async_decentralized_embedding_aggregator(
-        provider, consensus_config.aggregator_config, responses
+    aggregated_response = await async_centralized_embedding_aggregator(
+        embedding_model, responses
     )
     logger.info(
         "initial response aggregation complete", aggregated_response=aggregated_response
@@ -49,8 +51,9 @@ async def run_consensus(
         responses = await send_round(
             provider, consensus_config, initial_conversation, aggregated_response
         )
-        aggregated_response = await async_decentralized_embedding_aggregator(
-            provider, consensus_config.aggregator_config, responses
+
+        aggregated_response = await async_centralized_embedding_aggregator(
+            embedding_model, responses
         )
         logger.info(
             "responses aggregated",

@@ -93,6 +93,7 @@ class Settings(BaseSettings):
     # OpenRouter Settings
     open_router_base_url: str = "https://openrouter.ai/api/v1"
     open_router_api_key: str = ""
+    gemini_embedding_key: str = ""
 
     # Path Settings
     data_path: Path = create_path("data")
