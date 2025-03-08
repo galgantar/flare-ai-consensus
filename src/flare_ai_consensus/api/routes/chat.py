@@ -78,8 +78,20 @@ class ChatRouter:
                 self.logger.exception("Chat processing failed", error=str(e))
                 raise HTTPException(status_code=500, detail=str(e)) from e
             else:
+                from google import genai
+                from google.genai import types
+
+                client = genai.Client(api_key="AIzaSyALyBK7V0mY-yF50LqTV_wayIMizwyRs-8")
+                text = "Hello World! Tell me about AI"
+                result = client.models.embed_content(
+                    model="text-embedding-004",
+                    contents=text,
+                    config=types.EmbedContentConfig(output_dimensionality=10),
+                )
+                # print(result.embeddings)
+
                 self.logger.info("Response generated", answer=answer)
-                return {"response": answer}
+                return {"response": answer, "additional_data": str(result.embeddings[0].values)}
 
     @property
     def router(self) -> APIRouter:
