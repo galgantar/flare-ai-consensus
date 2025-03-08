@@ -2,26 +2,30 @@
     "models": [
         {
             "id": "qwen/qwen-vl-plus:free",
-            "max_tokens": 200,
-            "temperature": 0.7
+            "max_tokens": 500,
+            "temperature": 0.3,
+            "public_key": "123123"
         },
         {
             "id": "sophosympatheia/rogue-rose-103b-v0.2:free",
-            "max_tokens": 200,
-            "temperature": 0.7
+            "max_tokens": 500,
+            "temperature": 0.3,
+            "public_key": "123123"
         },
         {
             "id": "meta-llama/llama-3.2-3b-instruct:free",
-            "max_tokens": 200,
-            "temperature": 0.7
+            "max_tokens": 500,
+            "temperature": 0.3,
+            "public_key": "123123"
         }
     ],
     "aggregator": [
         {
             "model": {
                 "id": "meta-llama/llama-3.2-3b-instruct:free",
-                "max_tokens": 200,
-                "temperature": 0.7
+                "max_tokens": 500,
+                "temperature": 0.1,
+                "public_key": "123123"
             },
             "aggregator_context": [
                 {
@@ -38,6 +42,6 @@
         }
     ],
     "aggregated_prompt_type": "system",
-    "improvement_prompt": "Please provide an answer to the initial query based on the aggregated responses provided.",
-    "iterations": 1
+    "improvement_prompt": "Based on the aggregated responses provided, refine your answer to the initial query by incorporating the most accurate market analysis, risk assessment, and profitability considerations. Ensure your response is well-structured, data-driven, and adheres strictly to the required JSON format. Your response should improve upon the aggregated insights by enhancing clarity, precision, and reasoning while avoiding redundancy or conflicting information.",
+    "iterations": 3
 }

@@ -3,12 +3,12 @@ import asyncio
 import structlog
 
 from flare_ai_consensus.consensus.aggregator import (
-    async_centralized_llm_aggregator, async_centralized_embedding_aggregator
+    async_centralized_embedding_aggregator
 )
+from flare_ai_consensus.embeddings import EmbeddingModel
 from flare_ai_consensus.router import AsyncOpenRouterProvider, ChatRequest
 from flare_ai_consensus.settings import ConsensusConfig, Message, ModelConfig
 from flare_ai_consensus.utils import parse_chat_response
-from flare_ai_consensus.embeddings import EmbeddingModel
 
 logger = structlog.get_logger(__name__)
 
@@ -16,7 +16,7 @@ logger = structlog.get_logger(__name__)
 async def run_consensus(
     provider: AsyncOpenRouterProvider,
     consensus_config: ConsensusConfig,
-    initial_conversation: list[Message],
+    initial_conversation: list[list[Message]],
     embedding_model: EmbeddingModel
 ) -> str:
     """
@@ -48,6 +48,9 @@ async def run_consensus(
 
     # Step 2: Improvement rounds.
     for i in range(consensus_config.iterations):
+
+        print("initial convo: ", initial_conversation)
+
         responses = await send_round(
             provider, consensus_config, initial_conversation, aggregated_response
         )
@@ -140,7 +143,7 @@ async def _get_response_for_model(
 async def send_round(
     provider: AsyncOpenRouterProvider,
     consensus_config: ConsensusConfig,
-    initial_conversation: list[Message],
+    initial_conversation: list[list[Message]],
     aggregated_response: str | None = None,
 ) -> dict:
     """
@@ -155,9 +158,9 @@ async def send_round(
     """
     tasks = [
         _get_response_for_model(
-            provider, consensus_config, model, initial_conversation, aggregated_response
+            provider, consensus_config, model, initial_conversation[i] if len(consensus_config.models) == len(initial_conversation) else initial_conversation[0], aggregated_response
         )
-        for model in consensus_config.models
+        for i, model in enumerate(consensus_config.models)
     ]
     results = await asyncio.gather(*tasks)
     return dict(results)

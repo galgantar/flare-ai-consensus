@@ -1,12 +1,10 @@
-import asyncio
-
 import numpy as np
 
+from flare_ai_consensus.embeddings import EmbeddingModel
 from flare_ai_consensus.router import (
     AsyncOpenRouterProvider,
     ChatRequest,
-    OpenRouterProvider,
-    EmbeddingRequest
+    OpenRouterProvider
 )
 from flare_ai_consensus.settings import AggregatorConfig, Message
 from flare_ai_consensus.embeddings import EmbeddingModel
@@ -113,7 +111,7 @@ def calculate_shapley_values(embeddings_dict: dict[str, np.ndarray]) -> dict[str
                 all_subsets.extend(combinations(set(models) - {model_id}, r))
 
             shapley_values[model_id] = 0
-            for S in all_subsets:            
+            for S in all_subsets:
                 mean = np.mean([embeddings_dict[model] for model in S] + [embeddings_dict[model_id]], axis=0)
                 mean_without_model = np.mean([embeddings_dict[model] for model in S], axis=0)
 
