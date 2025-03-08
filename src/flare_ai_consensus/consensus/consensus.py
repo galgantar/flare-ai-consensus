@@ -36,7 +36,7 @@ async def run_consensus(
     responses = await send_round(
         provider, consensus_config, response_data["initial_conversation"]
     )
-    aggregated_response = await async_centralized_embedding_aggregator(
+    aggregated_response, shapley_values = await async_centralized_embedding_aggregator(
         embedding_model, responses
     )
     logger.info(
@@ -52,7 +52,7 @@ async def run_consensus(
             provider, consensus_config, initial_conversation, aggregated_response
         )
 
-        aggregated_response = await async_centralized_embedding_aggregator(
+        aggregated_response, shapley_values = await async_centralized_embedding_aggregator(
             embedding_model, responses
         )
         logger.info(
@@ -64,7 +64,7 @@ async def run_consensus(
         response_data[f"iteration_{i + 1}"] = responses
         response_data[f"aggregate_{i + 1}"] = aggregated_response
 
-    return aggregated_response
+    return aggregated_response, shapley_values
 
 
 def _build_improvement_conversation(

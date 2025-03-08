@@ -1,6 +1,7 @@
 import structlog
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
+import json
 
 from flare_ai_consensus.consensus import run_consensus
 from flare_ai_consensus.router import AsyncOpenRouterProvider
@@ -71,7 +72,7 @@ class ChatRouter:
                 ]
 
                 # Run consensus algorithm
-                answer = await run_consensus(
+                answer, shapley_values = await run_consensus(
                     self.provider,
                     self.consensus_config,
                     initial_conversation,
@@ -83,7 +84,7 @@ class ChatRouter:
                 raise HTTPException(status_code=500, detail=str(e)) from e
             else:
                 self.logger.info("Response generated", answer=answer)
-                return {"response": answer}
+                return {"response": answer, "shapley_values": json.dumps(shapley_values)}
 
     @property
     def router(self) -> APIRouter:

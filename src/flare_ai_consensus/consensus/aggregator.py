@@ -10,6 +10,9 @@ from flare_ai_consensus.router import (
 )
 from flare_ai_consensus.settings import AggregatorConfig, Message
 from flare_ai_consensus.embeddings import EmbeddingModel
+from itertools import combinations
+from math import factorial
+
 
 def _concatenate_aggregator(responses: dict[str, str]) -> str:
     """
@@ -91,6 +94,36 @@ async def async_centralized_llm_aggregator(
     return response.get("choices", [])[0].get("message", {}).get("content", "")
 
 
+def calculate_shapley_values(embeddings_dict: dict[str, np.ndarray]) -> dict[str, float]:
+    """
+    Calculate Shapley values for each model based on their embeddings.
+
+    :param embeddings_dict: A dictionary mapping model IDs to their embedding vectors.
+    :return: A dictionary mapping model IDs to their Shapley values.
+    """
+
+    shapley_values = {}
+    models = list(embeddings_dict.keys())
+    N = len(models)
+    global_mean = np.mean([embeddings_dict[model] for model in models], axis=0)
+
+    for model_id in models:
+            all_subsets = []
+            for r in range(1, N):
+                all_subsets.extend(combinations(set(models) - {model_id}, r))
+
+            shapley_values[model_id] = 0
+            for S in all_subsets:            
+                mean = np.mean([embeddings_dict[model] for model in S] + [embeddings_dict[model_id]], axis=0)
+                mean_without_model = np.mean([embeddings_dict[model] for model in S], axis=0)
+
+                marginal_contribution = 1/(np.linalg.norm(global_mean - mean) + 1) - 1/(np.linalg.norm(global_mean - mean_without_model) + 1)
+                weight = factorial(len(S)) * factorial(N - len(S) - 1) / factorial(N)
+                shapley_values[model_id] += weight * marginal_contribution
+
+    shapley_values = {model_id: shapley_values[model_id] for model_id in shapley_values}
+    return shapley_values
+
 async def async_centralized_embedding_aggregator(
     embedding_model: EmbeddingModel,
     responses: dict[str, str],
@@ -110,7 +143,9 @@ async def async_centralized_embedding_aggregator(
 
     # Find the response closest to the center
     closest_model_id = _find_closest_embedding(embeddings_dict, center_embedding)
-    return responses[closest_model_id]
+    shapley_values = calculate_shapley_values(embeddings_dict)
+
+    return responses[closest_model_id], shapley_values
 
 
 async def _get_embeddings_for_responses(
