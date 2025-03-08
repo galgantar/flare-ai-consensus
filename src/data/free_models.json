@@ -1,11 +1,67 @@
 {
     "data": [
         {
-            "id": "cognitivecomputations/dolphin3.0-r1-mistral-24b:free",
-            "name": "Dolphin3.0 R1 Mistral 24b (free)",
-            "created": 1739462498,
-            "description": "Dolphin 3.0 R1 is the next generation of the Dolphin series of instruct-tuned models.  Designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.\n\nThe R1 version has been trained for 3 epochs to reason using 800k reasoning traces from the Dolphin-R1 dataset.\n\nDolphin aims to be a general purpose reasoning instruct model, similar to the models behind ChatGPT, Claude, Gemini.\n\nPart of the [Dolphin 3.0 Collection](https://huggingface.co/collections/cognitivecomputations/dolphin-30-677ab47f73d7ff66743979a3) Curated and trained by [Eric Hartford](https://huggingface.co/ehartford), [Ben Gitter](https://huggingface.co/bigstorm), [BlouseJury](https://huggingface.co/BlouseJury) and [Cognitive Computations](https://huggingface.co/cognitivecomputations)",
-            "context_length": 32768,
+            "id": "deepseek/deepseek-r1-zero:free",
+            "name": "DeepSeek: DeepSeek R1 Zero (free)",
+            "created": 1741297434,
+            "description": "DeepSeek-R1-Zero is a model trained via large-scale reinforcement learning (RL) without supervised fine-tuning (SFT) as a preliminary step. It's 671B parameters in size, with 37B active in an inference pass.\n\nIt demonstrates remarkable performance on reasoning. With RL, DeepSeek-R1-Zero naturally emerged with numerous powerful and interesting reasoning behaviors.\n\nDeepSeek-R1-Zero encounters challenges such as endless repetition, poor readability, and language mixing. See [DeepSeek R1](/deepseek/deekseek-r1) for the SFT model.\n\n",
+            "context_length": 163840,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Other",
+                "instruct_type": "deepseek-r1"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 163840,
+                "max_completion_tokens": null,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "qwen/qwq-32b:free",
+            "name": "Qwen: QwQ 32B (free)",
+            "created": 1741208814,
+            "description": "QwQ is the reasoning model of the Qwen series. Compared with conventional instruction-tuned models, QwQ, which is capable of thinking and reasoning, can achieve significantly enhanced performance in downstream tasks, especially hard problems. QwQ-32B is the medium-sized reasoning model, which is capable of achieving competitive performance against state-of-the-art reasoning models, e.g., DeepSeek-R1, o1-mini.",
+            "context_length": 131072,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Qwen",
+                "instruct_type": "qwq"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 131072,
+                "max_completion_tokens": 131072,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "moonshotai/moonlight-16b-a3b-instruct:free",
+            "name": "Moonshot AI: Moonlight 16B A3B Instruct (free)",
+            "created": 1740719801,
+            "description": "Moonlight-16B-A3B-Instruct is a 16B-parameter Mixture-of-Experts (MoE) language model developed by Moonshot AI. It is optimized for instruction-following tasks with 3B activated parameters per inference. The model advances the Pareto frontier in performance per FLOP across English, coding, math, and Chinese benchmarks. It outperforms comparable models like Llama3-3B and Deepseek-v2-Lite while maintaining efficient deployment capabilities through Hugging Face integration and compatibility with popular inference engines like vLLM12.",
+            "context_length": 8192,
             "architecture": {
                 "modality": "text->text",
                 "tokenizer": "Other",
@@ -15,7 +71,67 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 8192,
+                "max_completion_tokens": null,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "nousresearch/deephermes-3-llama-3-8b-preview:free",
+            "name": "Nous: DeepHermes 3 Llama 3 8B Preview (free)",
+            "created": 1740719372,
+            "description": "DeepHermes 3 Preview is the latest version of our flagship Hermes series of LLMs by Nous Research, and one of the first models in the world to unify Reasoning (long chains of thought that improve answer accuracy) and normal LLM response modes into one model. We have also improved LLM annotation, judgement, and function calling.\n\nDeepHermes 3 Preview is one of the first LLM models to unify both \"intuitive\", traditional mode responses and long chain of thought reasoning responses into a single model, toggled by a system prompt.",
+            "context_length": 131072,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Other",
+                "instruct_type": null
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 131072,
+                "max_completion_tokens": null,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "cognitivecomputations/dolphin3.0-r1-mistral-24b:free",
+            "name": "Dolphin3.0 R1 Mistral 24B (free)",
+            "created": 1739462498,
+            "description": "Dolphin 3.0 R1 is the next generation of the Dolphin series of instruct-tuned models.  Designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.\n\nThe R1 version has been trained for 3 epochs to reason using 800k reasoning traces from the Dolphin-R1 dataset.\n\nDolphin aims to be a general purpose reasoning instruct model, similar to the models behind ChatGPT, Claude, Gemini.\n\nPart of the [Dolphin 3.0 Collection](https://huggingface.co/collections/cognitivecomputations/dolphin-30-677ab47f73d7ff66743979a3) Curated and trained by [Eric Hartford](https://huggingface.co/ehartford), [Ben Gitter](https://huggingface.co/bigstorm), [BlouseJury](https://huggingface.co/BlouseJury) and [Cognitive Computations](https://huggingface.co/cognitivecomputations)",
+            "context_length": 32768,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Other",
+                "instruct_type": "deepseek-r1"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 32768,
@@ -26,7 +142,7 @@
         },
         {
             "id": "cognitivecomputations/dolphin3.0-mistral-24b:free",
-            "name": "Dolphin3.0 Mistral 24b (free)",
+            "name": "Dolphin3.0 Mistral 24B (free)",
             "created": 1739462019,
             "description": "Dolphin 3.0 is the next generation of the Dolphin series of instruct-tuned models.  Designed to be the ultimate general purpose local model, enabling coding, math, agentic, function calling, and general use cases.\n\nDolphin aims to be a general purpose instruct model, similar to the models behind ChatGPT, Claude, Gemini. \n\nPart of the [Dolphin 3.0 Collection](https://huggingface.co/collections/cognitivecomputations/dolphin-30-677ab47f73d7ff66743979a3) Curated and trained by [Eric Hartford](https://huggingface.co/ehartford), [Ben Gitter](https://huggingface.co/bigstorm), [BlouseJury](https://huggingface.co/BlouseJury) and [Cognitive Computations](https://huggingface.co/cognitivecomputations)",
             "context_length": 32768,
@@ -39,7 +155,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 32768,
@@ -52,7 +172,7 @@
             "id": "google/gemini-2.0-flash-lite-preview-02-05:free",
             "name": "Google: Gemini Flash Lite 2.0 Preview (free)",
             "created": 1738768262,
-            "description": "Gemini Flash Lite 2.0 offers a significantly faster time to first token (TTFT) compared to [Gemini Flash 1.5](google/gemini-flash-1.5), while maintaining quality on par with larger models like [Gemini Pro 1.5](google/gemini-pro-1.5). Because it's currently in preview, it will be **heavily rate-limited** by Google. This model will move from free to paid pending a general rollout on February 24th, at $0.075 / $0.30 per million input / ouput tokens respectively.",
+            "description": "Gemini Flash Lite 2.0 offers a significantly faster time to first token (TTFT) compared to [Gemini Flash 1.5](/google/gemini-flash-1.5), while maintaining quality on par with larger models like [Gemini Pro 1.5](/google/gemini-pro-1.5). Because it's currently in preview, it will be **heavily rate-limited** by Google. This model will move from free to paid pending a general rollout on February 24th, at $0.075 / $0.30 per million input / ouput tokens respectively.",
             "context_length": 1000000,
             "architecture": {
                 "modality": "text+image->text",
@@ -63,7 +183,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 1000000,
@@ -87,35 +211,15 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 2000000,
                 "max_completion_tokens": 8192,
-                "is_moderated": false
-            },
-            "per_request_limits": null
-        },
-        {
-            "id": "qwen/qwen-vl-plus:free",
-            "name": "Qwen: Qwen VL Plus (free)",
-            "created": 1738731255,
-            "description": "Qwen's Enhanced Large Visual Language Model. Significantly upgraded for detailed recognition capabilities and text recognition abilities, supporting ultra-high pixel resolutions up to millions of pixels and extreme aspect ratios for image input. It delivers significant performance across a broad range of visual tasks.\n",
-            "context_length": 7500,
-            "architecture": {
-                "modality": "text+image->text",
-                "tokenizer": "Qwen",
-                "instruct_type": null
-            },
-            "pricing": {
-                "prompt": "0",
-                "completion": "0",
-                "image": "0",
-                "request": "0"
-            },
-            "top_provider": {
-                "context_length": 7500,
-                "max_completion_tokens": 1500,
                 "is_moderated": false
             },
             "per_request_limits": null
@@ -135,7 +239,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 131072,
@@ -159,7 +267,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 32000,
@@ -177,13 +289,17 @@
             "architecture": {
                 "modality": "text->text",
                 "tokenizer": "Llama3",
-                "instruct_type": null
+                "instruct_type": "deepseek-r1"
             },
             "pricing": {
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 128000,
@@ -207,7 +323,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 1048576,
@@ -225,13 +345,17 @@
             "architecture": {
                 "modality": "text->text",
                 "tokenizer": "DeepSeek",
-                "instruct_type": null
+                "instruct_type": "deepseek-r1"
             },
             "pricing": {
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 163840,
@@ -255,7 +379,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 4096,
@@ -279,7 +407,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 131072,
@@ -303,7 +435,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 40000,
@@ -327,7 +463,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 1048576,
@@ -351,7 +491,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 2097152,
@@ -375,7 +519,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 131072,
@@ -399,11 +547,43 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 40960,
                 "max_completion_tokens": 8192,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "qwen/qwen-2.5-coder-32b-instruct:free",
+            "name": "Qwen2.5 Coder 32B Instruct (free)",
+            "created": 1731368400,
+            "description": "Qwen2.5-Coder is the latest series of Code-Specific Qwen large language models (formerly known as CodeQwen). Qwen2.5-Coder brings the following improvements upon CodeQwen1.5:\n\n- Significantly improvements in **code generation**, **code reasoning** and **code fixing**. \n- A more comprehensive foundation for real-world applications such as **Code Agents**. Not only enhancing coding capabilities but also maintaining its strengths in mathematics and general competencies.\n\nTo read more about its evaluation results, check out [Qwen 2.5 Coder's blog](https://qwenlm.github.io/blog/qwen2.5-coder-family/).",
+            "context_length": 128000,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Qwen",
+                "instruct_type": "chatml"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 128000,
+                "max_completion_tokens": null,
                 "is_moderated": false
             },
             "per_request_limits": null
@@ -423,7 +603,39 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 131072,
+                "max_completion_tokens": null,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "meta-llama/llama-3.2-1b-instruct:free",
+            "name": "Meta: Llama 3.2 1B Instruct (free)",
+            "created": 1727222400,
+            "description": "Llama 3.2 1B is a 1-billion-parameter language model focused on efficiently performing natural language tasks, such as summarization, dialogue, and multilingual text analysis. Its smaller size allows it to operate efficiently in low-resource environments while maintaining strong task performance.\n\nSupporting eight core languages and fine-tunable for more, Llama 1.3B is ideal for businesses or developers seeking lightweight yet powerful AI solutions that can operate in diverse multilingual settings without the high computational demand of larger models.\n\nClick here for the [original model card](https://github.com/meta-llama/llama-models/blob/main/models/llama3_2/MODEL_CARD.md).\n\nUsage of this model is subject to [Meta's Acceptable Use Policy](https://www.llama.com/llama3/use-policy/).",
+            "context_length": 131072,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Llama3",
+                "instruct_type": "llama3"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 131072,
@@ -447,7 +659,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 131072,
@@ -471,11 +687,43 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 1000000,
                 "max_completion_tokens": 8192,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "meta-llama/llama-3.1-8b-instruct:free",
+            "name": "Meta: Llama 3.1 8B Instruct (free)",
+            "created": 1721692800,
+            "description": "Meta's latest class of model (Llama 3.1) launched with a variety of sizes & flavors. This 8B instruct-tuned version is fast and efficient.\n\nIt has demonstrated strong performance compared to leading closed-source models in human evaluations.\n\nTo read more about the model release, [click here](https://ai.meta.com/blog/meta-llama-3-1/). Usage of this model is subject to [Meta's Acceptable Use Policy](https://llama.meta.com/llama3/use-policy/).",
+            "context_length": 131072,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Llama3",
+                "instruct_type": "llama3"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 131072,
+                "max_completion_tokens": null,
                 "is_moderated": false
             },
             "per_request_limits": null
@@ -495,11 +743,43 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 128000,
                 "max_completion_tokens": 128000,
+                "is_moderated": false
+            },
+            "per_request_limits": null
+        },
+        {
+            "id": "qwen/qwen-2-7b-instruct:free",
+            "name": "Qwen 2 7B Instruct (free)",
+            "created": 1721088000,
+            "description": "Qwen2 7B is a transformer-based model that excels in language understanding, multilingual capabilities, coding, mathematics, and reasoning.\n\nIt features SwiGLU activation, attention QKV bias, and group query attention. It is pretrained on extensive data with supervised finetuning and direct preference optimization.\n\nFor more details, see this [blog post](https://qwenlm.github.io/blog/qwen2/) and [GitHub repo](https://github.com/QwenLM/Qwen2).\n\nUsage of this model is subject to [Tongyi Qianwen LICENSE AGREEMENT](https://huggingface.co/Qwen/Qwen1.5-110B-Chat/blob/main/LICENSE).",
+            "context_length": 8192,
+            "architecture": {
+                "modality": "text->text",
+                "tokenizer": "Qwen",
+                "instruct_type": "chatml"
+            },
+            "pricing": {
+                "prompt": "0",
+                "completion": "0",
+                "image": "0",
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
+            },
+            "top_provider": {
+                "context_length": 8192,
+                "max_completion_tokens": 4096,
                 "is_moderated": false
             },
             "per_request_limits": null
@@ -519,7 +799,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 8192,
@@ -543,7 +827,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 8192,
@@ -567,7 +855,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 8192,
@@ -591,7 +883,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 8192,
@@ -615,7 +911,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 8192,
@@ -639,7 +939,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 8192,
@@ -663,7 +967,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 4096,
@@ -687,7 +995,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 4096,
@@ -711,7 +1023,11 @@
                 "prompt": "0",
                 "completion": "0",
                 "image": "0",
-                "request": "0"
+                "request": "0",
+                "input_cache_read": "0",
+                "input_cache_write": "0",
+                "web_search": "0",
+                "internal_reasoning": "0"
             },
             "top_provider": {
                 "context_length": 4096,
