@@ -18,7 +18,7 @@ async def run_consensus(
     consensus_config: ConsensusConfig,
     initial_conversation: list[list[Message]],
     embedding_model: EmbeddingModel
-) -> str:
+):
     """
     Asynchronously runs the consensus learning loop.
 
@@ -48,8 +48,6 @@ async def run_consensus(
 
     # Step 2: Improvement rounds.
     for i in range(consensus_config.iterations):
-
-        print("initial convo: ", initial_conversation)
 
         responses = await send_round(
             provider, consensus_config, initial_conversation, aggregated_response

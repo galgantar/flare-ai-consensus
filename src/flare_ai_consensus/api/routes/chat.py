@@ -1,3 +1,5 @@
+import re
+
 import structlog
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
@@ -22,6 +24,18 @@ class ChatMessage(BaseModel):
 
     user_message: str = Field(..., min_length=1)
 
+def extract_values(text):
+    pattern = r'"operation": "(.*?)", "token_a": "(.*?)", "token_b": "(.*?)", "amount": "(.*?)"'
+    match = re.search(pattern, text)
+
+    if match:
+        return {
+            "operation": match.group(1),
+            "token_a": match.group(2),
+            "token_b": match.group(3),
+            "amount": match.group(4),
+        }
+    return None
 
 class ChatRouter:
     """
@@ -85,7 +99,9 @@ class ChatRouter:
                 raise HTTPException(status_code=500, detail=str(e)) from e
             else:
                 self.logger.info("Response generated", answer=answer)
-                return {"response": answer, "shapley_values": json.dumps(shapley_values)}
+
+                operation = extract_values(answer)
+                return {"response": answer, "shapley_values": json.dumps(shapley_values), "operation": operation}
 
     @property
     def router(self) -> APIRouter:
