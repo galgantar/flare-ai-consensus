@@ -27,6 +27,7 @@ class ModelConfig(BaseModel):
     max_tokens: int = 50
     temperature: float = 0.7
     public_key: str = ""
+    system_prompt: str = ""
 
 
 class AggregatorConfig(BaseModel):
@@ -57,6 +58,7 @@ class ConsensusConfig(BaseModel):
                 max_tokens=m["max_tokens"],
                 temperature=m["temperature"],
                 public_key=m["public_key"],
+                system_prompt=m["system_prompt"],
             )
             for m in json_data.get("models", [])
         ]
