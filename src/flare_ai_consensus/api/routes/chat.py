@@ -71,7 +71,7 @@ class ChatRouter:
         """
 
         @self._router.post("/")
-        async def chat(message: ChatMessage) -> dict[str, str] | None:  # pyright: ignore [reportUnusedFunction]
+        async def chat(message: ChatMessage): # -> dict[str, str] | None:  # pyright: ignore [reportUnusedFunction]
             """
             Process a chat message through the CL pipeline.
             Returns an aggregated response after a number of iterations.
@@ -87,7 +87,7 @@ class ChatRouter:
                     ])
 
                 # Run consensus algorithm
-                answer, shapley_values = await run_consensus(
+                answer, shapley_values, response_data = await run_consensus(
                     self.provider,
                     self.consensus_config,
                     initial_conversations,
@@ -101,7 +101,7 @@ class ChatRouter:
                 self.logger.info("Response generated", answer=answer)
 
                 operation = extract_values(answer)
-                return {"response": answer, "shapley_values": json.dumps(shapley_values), "operation": operation}
+                return {"response": answer, "shapley_values": json.dumps(shapley_values), "operation": operation, "response_data": response_data}
 
     @property
     def router(self) -> APIRouter:

@@ -39,6 +39,9 @@ async def run_consensus(
     aggregated_response, shapley_values = await async_centralized_embedding_aggregator(
         embedding_model, responses
     )
+
+    sum_shapley_values = shapley_values
+
     logger.info(
         "initial response aggregation complete", aggregated_response=aggregated_response
     )
@@ -56,6 +59,9 @@ async def run_consensus(
         aggregated_response, shapley_values = await async_centralized_embedding_aggregator(
             embedding_model, responses
         )
+        
+        sum_shapley_values = {k: sum_shapley_values[k] + shapley_values[k] for k in shapley_values}
+
         logger.info(
             "responses aggregated",
             iteration=i + 1,
@@ -65,7 +71,10 @@ async def run_consensus(
         response_data[f"iteration_{i + 1}"] = responses
         response_data[f"aggregate_{i + 1}"] = aggregated_response
 
-    return aggregated_response, shapley_values
+    
+    average_shapley_values = {k: v / consensus_config.iterations for k, v in sum_shapley_values.items()}
+
+    return aggregated_response, average_shapley_values, response_data
 
 
 def _build_improvement_conversation(
